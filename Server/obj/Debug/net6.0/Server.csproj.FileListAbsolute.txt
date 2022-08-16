@@ -13,3 +13,5 @@ D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net6.0\refint\Server.
 D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net6.0\Server.pdb
 D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
 D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net6.0\ref\Server.dll
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\websocket-sharp.dll
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net6.0\Server.csproj.CopyComplete

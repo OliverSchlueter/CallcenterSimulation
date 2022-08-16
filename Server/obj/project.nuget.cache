@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "CX1fkwxYR8xVPcvqzBWy1vXQBgav9cNKeLM2E+W/Bfbq9pt+JdisQgiZze2tpME3bGkec87dRA0wRBwdQThvFg==",
+  "dgSpecHash": "XbIgTQWD+PUDr3N1iL0V7HAHU8mBVKY+5dBnmw4opt20ELT0SKuUPQGVHZkcIRTioWg97si+z15qBnkzRgqC5Q==",
   "success": true,
   "projectFilePath": "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\Server.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\Oliver\\.nuget\\packages\\websocketsharp\\1.0.3-rc11\\websocketsharp.1.0.3-rc11.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'WebSocketSharp 1.0.3-rc11' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "WebSocketSharp",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
