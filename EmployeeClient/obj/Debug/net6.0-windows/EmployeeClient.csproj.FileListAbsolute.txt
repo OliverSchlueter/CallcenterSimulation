@@ -1,0 +1,15 @@
+D:\Workspace\GitHub\Callcenter\EmployeeClient\bin\Debug\net6.0-windows\EmployeeClient.exe
+D:\Workspace\GitHub\Callcenter\EmployeeClient\bin\Debug\net6.0-windows\EmployeeClient.deps.json
+D:\Workspace\GitHub\Callcenter\EmployeeClient\bin\Debug\net6.0-windows\EmployeeClient.runtimeconfig.json
+D:\Workspace\GitHub\Callcenter\EmployeeClient\bin\Debug\net6.0-windows\EmployeeClient.dll
+D:\Workspace\GitHub\Callcenter\EmployeeClient\bin\Debug\net6.0-windows\EmployeeClient.pdb
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.csproj.AssemblyReference.cache
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.AssemblyInfoInputs.cache
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.AssemblyInfo.cs
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.csproj.CoreCompileInputs.cache
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.dll
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\refint\EmployeeClient.dll
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.pdb
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\EmployeeClient.genruntimeconfig.cache
+D:\Workspace\GitHub\Callcenter\EmployeeClient\obj\Debug\net6.0-windows\ref\EmployeeClient.dll
