@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yan8UxR2Mvyn51zIdI4pzTFZBZnbEj49dchSmrFfhF7N+hCMClrkdsyiZs62nguGX4W3mcyxVbfaQDtqfR3Rew==",
+  "dgSpecHash": "CX1fkwxYR8xVPcvqzBWy1vXQBgav9cNKeLM2E+W/Bfbq9pt+JdisQgiZze2tpME3bGkec87dRA0wRBwdQThvFg==",
   "success": true,
-  "projectFilePath": "D:\\Workspace\\GitHub\\Callcenter\\Server\\Server.csproj",
+  "projectFilePath": "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
