@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lbFDBE7McRsSCHdVxmhQBJ5RCosi84ohsSZE9eJXQPs2TdRDTyfz1GVsuzJQe9VMAdR7kv4wv0G1G3bN30XePQ==",
+  "dgSpecHash": "DVBNIx2rMQV/5drZ6Qt4kp50cRjlfvmB7Z219HgQhXiT2EyDslPkXHrXexly32XI/6oit1OVHRfbjySvLVMEEg==",
   "success": true,
-  "projectFilePath": "D:\\Workspace\\GitHub\\Callcenter\\EmployeeClient\\EmployeeClient.csproj",
+  "projectFilePath": "D:\\Workspaces\\GitHub\\CallcenterSimulation\\EmployeeClient\\EmployeeClient.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
