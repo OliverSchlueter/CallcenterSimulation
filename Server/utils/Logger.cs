@@ -22,23 +22,35 @@ public class Logger
     
     public void Info(string message)
     {
+        ConsoleColor colorBefore = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Green;
         Log("INFO", message);
+        Console.ForegroundColor = colorBefore;
     }
 
     public void Debug(string message)
     {
         if (!IsDebug) return;
         
+        ConsoleColor colorBefore = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Log("DEBUG", message);
+        Console.ForegroundColor = colorBefore;
     }
 
     public void Warning(string message)
     {
+        ConsoleColor colorBefore = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Log("WARNING", message);
+        Console.ForegroundColor = colorBefore;
     }
 
     public void Error(string message)
     {
+        ConsoleColor colorBefore = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Red;
         Log("ERROR", message);
+        Console.ForegroundColor = colorBefore;
     }
 }

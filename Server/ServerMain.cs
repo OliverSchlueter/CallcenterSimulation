@@ -21,7 +21,7 @@ public class ServerMain
     private ServerMain()
     {
         _instance = this;
-        _logger = new Utils.Logger(false);
+        _logger = new Utils.Logger(true);
     }
 
     public void Initialize()
