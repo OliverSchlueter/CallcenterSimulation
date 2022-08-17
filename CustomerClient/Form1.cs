@@ -1,9 +1,12 @@
-namespace CustomerClient;
+﻿using System.Windows.Forms;
 
-public partial class Form1 : Form
+namespace CustomerClient
 {
-    public Form1()
+    public partial class Form1 : Form
     {
-        InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
+        }
     }
 }

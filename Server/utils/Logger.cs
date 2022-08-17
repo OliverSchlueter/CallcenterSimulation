@@ -2,7 +2,7 @@
 
 public class Logger
 {
-    private static string Format = "[%level%] [%time%]: %message%";
+    private static string _format = "[%level%] [%time%]: %message%";
     public bool IsDebug { get; set; }
 
     public Logger(bool isDebug = false)
@@ -12,7 +12,7 @@ public class Logger
 
     public void Log(string level, string message)
     {
-        string msg = Format
+        string msg = _format
             .Replace("%level%", level)
             .Replace("%message%", message)
             .Replace("%time%", DateTime.Now.ToLongTimeString());

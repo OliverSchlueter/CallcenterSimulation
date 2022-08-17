@@ -1,0 +1,17 @@
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\bin\Debug\net6.0\TestClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\bin\Debug\net6.0\TestClient.deps.json
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\bin\Debug\net6.0\TestClient.runtimeconfig.json
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\bin\Debug\net6.0\TestClient.dll
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\bin\Debug\net6.0\TestClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\bin\Debug\net6.0\websocket-sharp.dll
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.csproj.AssemblyReference.cache
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.AssemblyInfoInputs.cache
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.AssemblyInfo.cs
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.csproj.CoreCompileInputs.cache
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.csproj.CopyComplete
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.dll
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\refint\TestClient.dll
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\TestClient.genruntimeconfig.cache
+D:\Workspaces\GitHub\CallcenterSimulation\TestClient\obj\Debug\net6.0\ref\TestClient.dll

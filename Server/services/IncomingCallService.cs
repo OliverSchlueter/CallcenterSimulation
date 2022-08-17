@@ -8,7 +8,7 @@ public class IncomingCallService : WebSocketBehavior
 {
     protected override void OnOpen()
     {
-        base.OnOpen();
+        ServerMain.Instance.Logger.Info("New connection with ID: " + ID);
     }
 
     protected override void OnClose(CloseEventArgs e)
@@ -18,7 +18,7 @@ public class IncomingCallService : WebSocketBehavior
 
     protected override void OnMessage(MessageEventArgs e)
     {
-        base.OnMessage(e);
+        ServerMain.Instance.Logger.Info("New message from " + ID + ": " + e.Data);
     }
 
     protected override void OnError(ErrorEventArgs e)

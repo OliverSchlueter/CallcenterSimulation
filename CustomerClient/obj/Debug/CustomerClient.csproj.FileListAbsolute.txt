@@ -1,0 +1,10 @@
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\bin\Debug\CustomerClient.exe.config
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\bin\Debug\CustomerClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\bin\Debug\CustomerClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.csproj.AssemblyReference.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.csproj.SuggestedBindingRedirects.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.Properties.Resources.resources
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.csproj.GenerateResource.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.csproj.CoreCompileInputs.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\obj\Debug\CustomerClient.pdb
