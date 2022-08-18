@@ -50,7 +50,15 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="calls\Call.cs" />
+        <Compile Include="calls\CallHandler.cs" />
         <Compile Include="CustomerClientApp.cs" />
+        <Compile Include="forms\CallForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="forms\CallForm.Designer.cs">
+          <DependentUpon>CallForm.cs</DependentUpon>
+        </Compile>
         <Compile Include="forms\MainForm.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -59,6 +67,9 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="forms\CallForm.resx">
+          <DependentUpon>CallForm.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="forms\MainForm.resx">
           <DependentUpon>MainForm.cs</DependentUpon>
         </EmbeddedResource>

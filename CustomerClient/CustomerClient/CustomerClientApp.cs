@@ -6,21 +6,24 @@ using System.Text;
 using System.Windows.Forms;
 using CustomerClient.forms;
 using WebSocketSharp;
+using CustomerClient.Calls;
 
 namespace CustomerClient
 {
     public class CustomerClientApp
     {
         private static CustomerClientApp _instance;
-        public static CustomerClientApp Instance { get => _instance; }
+        public static CustomerClientApp Instance => _instance;
 
         private string _clientId;
-        public string ClientId { get => _clientId; }
+        public string ClientId => _clientId;
         
         private WebSocket _webSocketClient;
-        public WebSocket WebSocketClient { get => _webSocketClient; }
+        public WebSocket WebSocketClient => _webSocketClient; 
 
-        public CustomerClientApp()
+        private CallHandler _callHandler;
+        public CallHandler CallHandler => _callHandler;
+    public CustomerClientApp()
         {
             _instance = this;
             
@@ -39,6 +42,8 @@ namespace CustomerClient
                 _webSocketClient = null;
                 Environment.Exit(0);
             };
+
+            _callHandler = new CallHandler();
         }
 
         private void ConnectionThread()
@@ -52,6 +57,7 @@ namespace CustomerClient
 
                 MainForm.Instance.lbl_connectionStatus.Text = "Server status: " + (_webSocketClient.IsAlive ? "Connected" : "N/A");
                 MainForm.Instance.lbl_connectionStatus.ForeColor = (_webSocketClient.IsAlive ? Color.Green : Color.Red);
+                MainForm.Instance.btn_call.Enabled = _webSocketClient.IsAlive && _callHandler.CurrentCall.CallStatus == CallStatus.None;
                 
                 if (!_webSocketClient.IsAlive || !_webSocketClient.Ping())
                 {

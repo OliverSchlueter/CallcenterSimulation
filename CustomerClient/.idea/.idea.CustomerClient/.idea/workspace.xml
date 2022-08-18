@@ -5,27 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684d93ee-e033-42c0-acff-9d1ff6e6f350" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CustomerClient/CustomerClientApp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomerClient.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomerClient.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/forms/MainForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/forms/MainForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/Resources.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/Resources.resx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/Settings.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/Settings.settings" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.Properties.Resources.resources" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.csproj.AssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.csproj.GenerateResource.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.csproj.SuggestedBindingRedirects.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/CustomerClient.pdb" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerClient/calls/Call.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerClient/calls/CallHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerClient/forms/CallForm.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerClient/forms/CallForm.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerClient/forms/CallForm.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/CustomerClient.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/CustomerClient.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/CustomerClientApp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/CustomerClientApp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/forms/MainForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/forms/MainForm.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/forms/MainForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/forms/MainForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660830975524</updated>
-      <workItem from="1660830975719" duration="6186000" />
+      <workItem from="1660830975719" duration="9218000" />
     </task>
     <servers />
   </component>
