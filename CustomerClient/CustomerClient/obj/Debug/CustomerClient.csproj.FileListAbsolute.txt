@@ -1,0 +1,14 @@
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\CustomerClient.exe.config
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\CustomerClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\CustomerClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.csproj.AssemblyReference.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.csproj.SuggestedBindingRedirects.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.Properties.Resources.resources
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.csproj.GenerateResource.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.csproj.CoreCompileInputs.cache
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.forms.MainForm.resources
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\websocket-sharp.dll
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\websocket-sharp.xml
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.csproj.CopyComplete
