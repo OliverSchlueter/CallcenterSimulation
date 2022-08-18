@@ -1,5 +1,4 @@
 ﻿using System;
-using CustomerClient.forms;
 
 namespace CustomerClient.Calls;
 
@@ -13,18 +12,10 @@ public enum CallStatus
 public class Call
 {
     private string _channel;
-    public string Channel
-    {
-        get => _channel;
-        set => _channel = value;
-    }
+    public string Channel { get => _channel; set => _channel = value; }
 
     private CallStatus _callStatus;
-    public CallStatus CallStatus
-    {
-        get => _callStatus;
-        set => _callStatus = value;
-    }
+    public CallStatus CallStatus { get => _callStatus; set => _callStatus = value; }
 
     public Call()
     {
@@ -38,30 +29,29 @@ public class Call
         OnCallAccepted(new CallAcceptedEventArgs(_channel, _callStatus));
     }
 
-    protected virtual void OnCallAccepted(CallAcceptedEventArgs e)
+    private void OnCallAccepted(CallAcceptedEventArgs e)
     {
         EventHandler<CallAcceptedEventArgs> eventHandler = CallAcceptedEvent;
-        if (eventHandler != null)
-        {
+        if (eventHandler != null) 
             eventHandler(this, e);
-        }
+        
     }
 
     public event EventHandler<CallAcceptedEventArgs> CallAcceptedEvent; 
 
     public void HangUp()
     {
+        if (_callStatus == CallStatus.None)
+            return;
+        
         _channel = "";
         _callStatus = CallStatus.None;
 
-        if (_callStatus == CallStatus.InCall)
-        {
-            CustomerClientApp.Instance.WebSocketClient.Send(
+        CustomerClientApp.Instance.WebSocketClient.Send(
                 "{" +
-                "\"call\":\"end\"," +
+                "\"call\":\"end\"" +
                 "}"
-            );   
-        }
+            );
     }
 }
 

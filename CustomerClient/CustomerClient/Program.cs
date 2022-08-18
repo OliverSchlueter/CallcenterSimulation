@@ -4,15 +4,15 @@ using CustomerClient.forms;
 
 namespace CustomerClient
 {
-    class Program
+    static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            CustomerClientApp app = new CustomerClientApp();
+            new CustomerClientApp();
 
             Application.EnableVisualStyles();
             Application.Run(MainForm.Instance);

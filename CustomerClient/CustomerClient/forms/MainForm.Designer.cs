@@ -70,12 +70,10 @@ namespace CustomerClient.forms
             // cb_channel
             // 
             this.cb_channel.FormattingEnabled = true;
-            this.cb_channel.Items.AddRange(new object[] { "Support", "Order", "Apply" });
             this.cb_channel.Location = new System.Drawing.Point(152, 67);
             this.cb_channel.Name = "cb_channel";
             this.cb_channel.Size = new System.Drawing.Size(115, 26);
             this.cb_channel.TabIndex = 3;
-            this.cb_channel.Text = "Support";
             this.cb_channel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cb_channel_KeyPress);
             // 
             // MainForm

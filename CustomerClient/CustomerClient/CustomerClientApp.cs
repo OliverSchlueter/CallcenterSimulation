@@ -23,11 +23,15 @@ namespace CustomerClient
 
         private CallHandler _callHandler;
         public CallHandler CallHandler => _callHandler;
-    public CustomerClientApp()
+        
+        public CustomerClientApp()
         {
+            if (_instance != null)
+                return;
+        
             _instance = this;
             
-            _clientId = LoadOrGetClientID();
+            _clientId = LoadOrGetClientId();
             
             _webSocketClient = new WebSocket("ws://127.0.0.1:1337/call");
             _webSocketClient.Connect();
@@ -71,7 +75,7 @@ namespace CustomerClient
             }
         }
 
-        private string LoadOrGetClientID()
+        private string LoadOrGetClientId()
         {
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string folderPath = appData + "\\Callcenter-Customer-Client\\";

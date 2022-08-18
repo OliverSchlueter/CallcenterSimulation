@@ -25,7 +25,7 @@ namespace CustomerClient.forms
 
         private void btn_hangUp_Click(object sender, EventArgs e)
         {
-            _call.HangUp();
+            // closing will cause to run CallForm_FormClosing
             Close();
         }
     }
