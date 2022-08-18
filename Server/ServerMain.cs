@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Server.Clients;
 using Server.Services;
 using Server.Utils;
 using WebSocketSharp;
@@ -8,8 +9,8 @@ namespace Server;
 
 public class ServerMain
 {
-    private static ServerMain? _instance;
-    public static ServerMain? Instance { get => _instance; }
+    private static ServerMain _instance;
+    public static ServerMain Instance { get => _instance; }
 
     public const string Version = "0.0.1-ALPHA";
 
@@ -18,10 +19,19 @@ public class ServerMain
     
     private WebSocketServer? _webSocketServer;
     public WebSocketServer? WebSocketServer { get => _webSocketServer; }
+
+    private Cache<string, Client> _clientCache;
+    public Cache<string, Client> ClientCache { get => _clientCache; }
+    
+    private Cache<string, Client> _unknownClientCache;
+    public Cache<string, Client> UnknownClientCache { get => _unknownClientCache; }
+    
     private ServerMain()
     {
         _instance = this;
         _logger = new Utils.Logger(true);
+        _clientCache = new Cache<string, Client>();
+        _unknownClientCache = new Cache<string, Client>();
     }
 
     public void Initialize()

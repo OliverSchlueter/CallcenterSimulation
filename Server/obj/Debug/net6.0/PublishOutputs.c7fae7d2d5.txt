@@ -1,0 +1,6 @@
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\publish\Server.exe
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\publish\Server.dll
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\publish\Server.deps.json
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\publish\Server.runtimeconfig.json
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\publish\Server.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\Server\bin\Debug\net6.0\publish\websocket-sharp.dll
