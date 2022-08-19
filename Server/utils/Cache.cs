@@ -6,12 +6,14 @@ public class Cache<I, E>
     private readonly Dictionary<I, E> _cache;
     private readonly Dictionary<I, int> _cacheTimes;
     private readonly Thread _cacheThread;
+    private readonly bool _autoRemove;
 
-    public Cache()
+    public Cache(bool autoRemove = false)
     {
+        _autoRemove = autoRemove;
         _cache = new Dictionary<I, E>();
         _cacheTimes = new Dictionary<I, int>();
-
+        
         _cacheThread = new Thread(CacheThread);
         _cacheThread.Start();
     }
@@ -31,8 +33,7 @@ public class Cache<I, E>
 
                 if (current == 0)
                 {
-                    _cache.Remove(key);
-                    _cacheTimes.Remove(key);
+                    Remove(key);
                 }
                 else
                     _cacheTimes[key] = current;
@@ -42,7 +43,7 @@ public class Cache<I, E>
         }
     }
 
-    public void Put(I identifier, E element)
+    public void Put(I identifier, E element, bool autoRemove = false)
     {
         if (_cache.ContainsKey(identifier))
             _cache.Remove(identifier);
@@ -51,7 +52,18 @@ public class Cache<I, E>
             _cacheTimes.Remove(identifier);
         
         _cache.Add(identifier, element);
-        _cacheTimes.Add(identifier, TimeInCache);
+        
+        if(_autoRemove || autoRemove) 
+            _cacheTimes.Add(identifier, TimeInCache);
+    }
+
+    public void Remove(I identifier)
+    {
+        if (!Contains(identifier))
+            return;
+
+        _cache.Remove(identifier);
+        _cacheTimes.Remove(identifier);
     }
 
     public E Get(I identifier)
@@ -60,6 +72,15 @@ public class Cache<I, E>
             return _cache[identifier];
 
         throw new NullReferenceException();
+    }
+
+    public List<E> GetAll()
+    {
+        List<E> list = new List<E>();
+        foreach (var value in _cache.Values)
+            list.Add(value);
+        
+        return list;
     }
 
     public bool Contains(I identifier)

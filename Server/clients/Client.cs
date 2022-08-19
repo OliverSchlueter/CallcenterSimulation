@@ -3,10 +3,10 @@
 public class Client
 {
     private string _sessionID;
-    public string SessionId { get => _sessionID; }
+    public string SessionId => _sessionID;
     
     private string? _clientID;
-    public string? ClientId { get => _clientID; }
+    public string? ClientId { get => _clientID; set => _clientID = value; }
     
     public Client(string sessionId, string? clientId)
     {

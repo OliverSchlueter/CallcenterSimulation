@@ -18,7 +18,7 @@ public class IncomingCallService : WebSocketBehavior
     protected override void OnClose(CloseEventArgs e)
     {
         ServerMain.Instance.Logger.Info("Connection quit with ID: " + ID);
-
+    
         if (ServerMain.Instance.ClientCache.Contains(ID))
         {
             //TODO: check if client was in a active call
@@ -31,8 +31,21 @@ public class IncomingCallService : WebSocketBehavior
         Dictionary<string, string>? json = JsonUtils.Deserialize(e.Data);
         if (json == null)
             return;
-        
-        Send(JsonUtils.Serialize(json));
+
+        if (json.ContainsKey("client_id") && ServerMain.Instance.UnknownClientCache.Contains(ID))
+        {
+            string clientId = json["client_id"];
+            Client client = ServerMain.Instance.UnknownClientCache.Get(ID);
+            client.ClientId = clientId;
+
+            if (ServerMain.Instance.ClientCache.Contains(clientId))
+            {
+                //TODO: client already exists in cache
+                return;
+            }
+            
+            ServerMain.Instance.ClientCache.Put(clientId, client);
+        }
     }
 
     protected override void OnError(ErrorEventArgs e)

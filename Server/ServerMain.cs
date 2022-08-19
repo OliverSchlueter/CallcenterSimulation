@@ -30,27 +30,19 @@ public class ServerMain
     {
         _instance = this;
         _logger = new Utils.Logger(true);
-        _clientCache = new Cache<string, Client>();
-        _unknownClientCache = new Cache<string, Client>();
+        _clientCache = new Cache<string, Client>(false);
+        _unknownClientCache = new Cache<string, Client>(false);
+        new Thread(CLIThread).Start();
     }
 
-    public void Initialize()
+    public void Start()
     {
         _webSocketServer = new WebSocketServer("ws://127.0.0.01:1337");
         _webSocketServer.AddWebSocketService<IncomingCallService>("/call");
-        _logger.Info("Initialized websocket server");
-    }
-    
-    public void Start()
-    {
-        if(_webSocketServer == null) Initialize();
-        
-        Debug.Assert(_webSocketServer != null);
         _webSocketServer.Start();
         
         _logger.Info("WebSocket server is now running");
-
-        while(_webSocketServer.IsListening) { }
+        
     }
 
     public void Stop(string reason, CloseStatusCode closeStatusCode = CloseStatusCode.Normal)
@@ -58,7 +50,86 @@ public class ServerMain
         if (_webSocketServer != null)
         {
             _webSocketServer.Stop(closeStatusCode, reason);
+            _webSocketServer = null;
             _logger.Info("WebSocket server is now stopped");
+        }
+    }
+
+    private void CLIThread()
+    {
+        while (true)
+        {
+            string? input = Console.ReadLine();
+            string[] args = input.Split(" ");
+
+            if (args.Length == 0)
+            {
+                _logger.Warning("Invalid arguments length");
+                continue;
+            }
+
+            switch (args[0].ToLower())
+            {
+            case "cache":
+                if (args.Length < 2)
+                {
+                    _logger.Warning("Invalid arguments length");
+                    continue;
+                }
+                
+                if (args[1].ToLower() == "clients")
+                {
+                    List<Client> clients = _clientCache.GetAll();
+                    clients.AddRange(_unknownClientCache.GetAll());
+
+                    _logger.Info($"All connected clients ({clients.Count}):");
+                    clients.ForEach(c =>
+                    {
+                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine($"Session ID: {c.SessionId}");
+                        Console.WriteLine($"Client ID: {c.ClientId}");
+                        Console.WriteLine("---------------------------------------------");
+                    });
+                }
+                    
+                break;
+            
+                case "server":
+                    if (args.Length < 2)
+                    {
+                        _logger.Warning("Invalid arguments length");
+                        continue;
+                    }
+
+                    if (args[1].ToLower() == "status")
+                    {
+                        _logger.Info("Server status: " + (_webSocketServer != null && _webSocketServer.IsListening ? "running" : "N/A"));
+                    } 
+                    else if (args[1].ToLower() == "start")
+                    {
+                        if (_webSocketServer != null && _webSocketServer.IsListening)
+                        {
+                            _logger.Warning("WebSocket server is already running");
+                            continue;
+                        }
+
+                        Start();
+                        _logger.Info("Manually started WebSocket server");
+                    }
+                    else if (args[1].ToLower() == "stop")
+                    {
+                        if (_webSocketServer == null || !_webSocketServer.IsListening)
+                        {
+                            _logger.Warning("WebSocket server is already stopped");
+                            continue;
+                        }
+
+                        Stop("Manually stopped");
+                        _logger.Info("Manually stopped WebSocket server");
+                    }
+                    
+                    break;
+            }
         }
     }
 

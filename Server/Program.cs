@@ -6,7 +6,6 @@ public static class Program
     {
         Console.WriteLine("Starting server application now");
         ServerMain main = ServerMain.CreateOrGetInstance();
-        main.Initialize();
         main.Start();
     }
 }
