@@ -17,7 +17,12 @@ public class IncomingCallService : WebSocketBehavior
 
     protected override void OnClose(CloseEventArgs e)
     {
-        
+        ServerMain.Instance.Logger.Info("Connection quit with ID: " + ID);
+
+        if (ServerMain.Instance.ClientCache.Contains(ID))
+        {
+            //TODO: check if client was in a active call
+        }
     }
 
     protected override void OnMessage(MessageEventArgs e)

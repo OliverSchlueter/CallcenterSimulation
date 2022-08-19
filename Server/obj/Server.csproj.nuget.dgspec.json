@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\Server.csproj": {}
+    "D:\\Workspace\\GitHub\\CallcenterSimulation\\Server\\Server.csproj": {}
   },
   "projects": {
-    "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\Server.csproj": {
+    "D:\\Workspace\\GitHub\\CallcenterSimulation\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\Server.csproj",
+        "projectUniqueName": "D:\\Workspace\\GitHub\\CallcenterSimulation\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\Server.csproj",
+        "projectPath": "D:\\Workspace\\GitHub\\CallcenterSimulation\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\Oliver\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspaces\\GitHub\\CallcenterSimulation\\Server\\obj\\",
+        "outputPath": "D:\\Workspace\\GitHub\\CallcenterSimulation\\Server\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Programme\\Visual Studio SDK\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Oliver\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Oliver\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,7 +55,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -58,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
