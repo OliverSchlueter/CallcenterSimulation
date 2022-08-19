@@ -22,16 +22,29 @@ public class ServerMain
 
     private Cache<string, Client> _clientCache;
     public Cache<string, Client> ClientCache { get => _clientCache; }
-    
+
+    private Dictionary<string, string> _clientIdSessionId;
+    public Dictionary<string, string> ClientIdSessionId => _clientIdSessionId;
+
     private Cache<string, Client> _unknownClientCache;
     public Cache<string, Client> UnknownClientCache { get => _unknownClientCache; }
-    
+
+    private Dictionary<string, Queue<Client>> _waitingCustomers;
+    public Dictionary<string, Queue<Client>> WaitingCustomers => _waitingCustomers;
+
+    private Dictionary<Client, Call> _currentCalls;
+    public Dictionary<Client, Call> CurrentCalls => _currentCalls;
+
     private ServerMain()
     {
         _instance = this;
         _logger = new Utils.Logger(true);
+        _clientIdSessionId = new Dictionary<string, string>();
         _clientCache = new Cache<string, Client>(false);
         _unknownClientCache = new Cache<string, Client>(false);
+        _waitingCustomers = new Dictionary<string, Queue<Client>>();
+        _currentCalls = new Dictionary<Client, Call>();
+        
         new Thread(CLIThread).Start();
     }
 
@@ -88,6 +101,8 @@ public class ServerMain
                         Console.WriteLine("---------------------------------------------");
                         Console.WriteLine($"Session ID: {c.SessionId}");
                         Console.WriteLine($"Client ID: {c.ClientId}");
+                        Console.WriteLine($"Role: {c.Role}");
+                        Console.WriteLine($"Call status: {c.CallStatus}");
                         Console.WriteLine("---------------------------------------------");
                     });
                 }
@@ -126,6 +141,20 @@ public class ServerMain
 
                         Stop("Manually stopped");
                         _logger.Info("Manually stopped WebSocket server");
+                    }
+                    
+                    break;
+                
+                case "customer_queue":
+                    string channel = args[1].ToLower();
+
+                    if (!_waitingCustomers.ContainsKey(channel))
+                        return;
+                    
+                    _logger.Info($"All waiting customers in {channel} channel ({_waitingCustomers[channel].Count}):");
+                    foreach (var client in _waitingCustomers[channel])
+                    {
+                        Console.WriteLine(" - " + client.ClientId);
                     }
                     
                     break;

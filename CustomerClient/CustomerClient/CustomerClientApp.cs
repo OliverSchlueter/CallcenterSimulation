@@ -34,6 +34,7 @@ namespace CustomerClient
             _clientId = LoadOrGetClientId();
             
             _webSocketClient = new WebSocket("ws://127.0.0.1:1337/call");
+            _webSocketClient.OnMessage += (sender, args) => Console.WriteLine("MSG: " + args.Data); 
             _webSocketClient.Connect();
             SendClientId();
 
@@ -66,6 +67,10 @@ namespace CustomerClient
                 if (!_webSocketClient.IsAlive || !_webSocketClient.Ping())
                 {
                     WebSocketClient.Connect();
+                    
+                    // the websocket needs some time to connect
+                    Thread.Sleep(100);
+                    
                     SendClientId();
                     
                     failCounter = !WebSocketClient.IsAlive ? ++failCounter : 0;
@@ -78,7 +83,10 @@ namespace CustomerClient
 
         private void SendClientId()
         {
-            _webSocketClient.Send("{\"client_id\": \"%client_id%\"}".Replace("%client_id%", _clientId));
+            _webSocketClient.Send("{\"client_id\": \"%client_id%\", \"role\": \"%role%\"}"
+                .Replace("%client_id%", _clientId)
+                .Replace("%role%", "Customer")
+            );
         }
 
         private string LoadOrGetClientId()

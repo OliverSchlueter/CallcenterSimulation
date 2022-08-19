@@ -23,6 +23,11 @@ public class IncomingCallService : WebSocketBehavior
         {
             //TODO: check if client was in a active call
         }
+
+        if (ServerMain.Instance.ClientIdSessionId.ContainsKey(ID))
+        {
+            ServerMain.Instance.ClientIdSessionId.Remove(ID);
+        }
     }
 
     protected override void OnMessage(MessageEventArgs e)
@@ -32,10 +37,17 @@ public class IncomingCallService : WebSocketBehavior
         if (json == null)
             return;
 
+        Client? client = null;
+
+        if (ServerMain.Instance.UnknownClientCache.Contains(ID))
+            client = ServerMain.Instance.UnknownClientCache.Get(ID);
+        else if (ServerMain.Instance.ClientIdSessionId.ContainsKey(ID))
+            client = ServerMain.Instance.ClientCache.Get(ServerMain.Instance.ClientIdSessionId[ID]);
+
         if (json.ContainsKey("client_id") && ServerMain.Instance.UnknownClientCache.Contains(ID))
         {
             string clientId = json["client_id"];
-            Client client = ServerMain.Instance.UnknownClientCache.Get(ID);
+            client = ServerMain.Instance.UnknownClientCache.Get(ID);
             client.ClientId = clientId;
 
             if (ServerMain.Instance.ClientCache.Contains(clientId))
@@ -45,6 +57,38 @@ public class IncomingCallService : WebSocketBehavior
             }
             
             ServerMain.Instance.ClientCache.Put(clientId, client);
+            ServerMain.Instance.ClientIdSessionId.Add(ID, clientId);
+            ServerMain.Instance.UnknownClientCache.Remove(ID);
+        }
+        
+        if (client != null && json.ContainsKey("role"))
+        {
+            string roleName = json["role"];
+            Role.TryParse(roleName, out Role role);
+            client.Role = role;
+        }
+
+        if (client != null && json.ContainsKey("call"))
+        {
+            CallStatus callStatus = CallStatus.None;
+            
+            switch (json["call"])
+            {
+                case "start":
+                    callStatus = CallStatus.Calling;
+                    break;
+                case "end":
+                    callStatus = CallStatus.HangUp;
+                    break;
+            }
+
+            //TODO: channel handling
+            string? channel = null;
+
+            if (json.ContainsKey("channel"))
+                channel = json["channel"];
+
+            client.CallAction(callStatus, channel);
         }
     }
 

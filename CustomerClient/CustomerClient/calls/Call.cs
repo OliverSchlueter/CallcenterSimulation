@@ -44,14 +44,15 @@ public class Call
         if (_callStatus == CallStatus.None)
             return;
         
+        CustomerClientApp.Instance.WebSocketClient.Send(
+            "{" +
+            "\"call\":\"end\"," +
+            "\"channel\":\"" + _channel + "\"" +
+            "}"
+        );
+        
         _channel = "";
         _callStatus = CallStatus.None;
-
-        CustomerClientApp.Instance.WebSocketClient.Send(
-                "{" +
-                "\"call\":\"end\"" +
-                "}"
-            );
     }
 }
 
