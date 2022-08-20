@@ -4,11 +4,11 @@ namespace Server.Clients;
 
 public class Client
 {
-    private string _sessionID;
-    public string SessionId { get => _sessionID; set => _sessionID = value; }
+    private string _sessionId;
+    public string SessionId { get => _sessionId; set => _sessionId = value; }
     
-    private string? _clientID;
-    public string? ClientId { get => _clientID; set => _clientID = value; }
+    private string? _clientId;
+    public string? ClientId { get => _clientId; set => _clientId = value; }
 
     private readonly WebSocket _session;
     
@@ -20,8 +20,8 @@ public class Client
     
     public Client(string sessionId, string? clientId, Role role = Role.Unknown)
     {
-        _sessionID = sessionId;
-        _clientID = clientId;
+        _sessionId = sessionId;
+        _clientId = clientId;
         _callStatus = CallStatus.None;
         _role = role;
         _session = ServerMain.Instance.WebSocketServer.WebSocketServices["/call"].Sessions[sessionId].Context.WebSocket;

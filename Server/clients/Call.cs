@@ -2,10 +2,10 @@
 
 public class Call
 {
-    private Client _client1;
+    private readonly Client _client1;
     public Client Client1 => _client1;
     
-    private Client _client2;
+    private readonly Client _client2;
     public Client Client2 => _client2;
     
     private DateTime? _startTime;

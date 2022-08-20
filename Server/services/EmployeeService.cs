@@ -20,9 +20,4 @@ public class EmployeeService : WebSocketBehavior
     {
         ServerMain.Instance.Logger.Info($"[-] Employee - {ID}");
     }
-
-    protected override void OnError(ErrorEventArgs e)
-    {
-        
-    }
 }

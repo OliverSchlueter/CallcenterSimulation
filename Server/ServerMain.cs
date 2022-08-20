@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Server.Clients;
+﻿using Server.Clients;
 using Server.Services;
 using Server.Utils;
 using WebSocketSharp;
@@ -10,36 +9,36 @@ namespace Server;
 public class ServerMain
 {
     private static ServerMain _instance;
-    public static ServerMain Instance { get => _instance; }
+    public static ServerMain Instance => _instance;
 
-    public const string Version = "0.0.1-ALPHA";
+    public const string Version = "0.0.2-ALPHA";
 
     private readonly Utils.Logger _logger;
-    public Utils.Logger Logger { get => _logger; }
+    public Utils.Logger Logger => _logger;
     
     private WebSocketServer? _webSocketServer;
-    public WebSocketServer? WebSocketServer { get => _webSocketServer; }
+    public WebSocketServer? WebSocketServer => _webSocketServer;
 
-    private Cache<string, Client> _clientCache;
-    public Cache<string, Client> ClientCache { get => _clientCache; }
+    private readonly Cache<string, Client> _clientCache;
+    public Cache<string, Client> ClientCache => _clientCache;
 
-    private Dictionary<string, string> _SessionIdClientId; // key: sessionId value: clientId
-    public Dictionary<string, string> SessionIdClientId => _SessionIdClientId;
+    private readonly Dictionary<string, string> _sessionIdClientId; // key: sessionId value: clientId
+    public Dictionary<string, string> SessionIdClientId => _sessionIdClientId;
 
-    private Cache<string, Client> _unknownClientCache;
-    public Cache<string, Client> UnknownClientCache { get => _unknownClientCache; }
+    private readonly Cache<string, Client> _unknownClientCache;
+    public Cache<string, Client> UnknownClientCache => _unknownClientCache;
 
-    private Dictionary<string, Queue<Client>> _waitingCustomers;
+    private readonly Dictionary<string, Queue<Client>> _waitingCustomers;
     public Dictionary<string, Queue<Client>> WaitingCustomers => _waitingCustomers;
 
-    private Dictionary<Client, Call> _currentCalls;
+    private readonly Dictionary<Client, Call> _currentCalls;
     public Dictionary<Client, Call> CurrentCalls => _currentCalls;
 
     private ServerMain()
     {
         _instance = this;
         _logger = new Utils.Logger(true);
-        _SessionIdClientId = new Dictionary<string, string>();
+        _sessionIdClientId = new Dictionary<string, string>();
         _clientCache = new Cache<string, Client>(false);
         _unknownClientCache = new Cache<string, Client>(false);
         _waitingCustomers = new Dictionary<string, Queue<Client>>();
@@ -56,38 +55,36 @@ public class ServerMain
         _webSocketServer.Start();
         
         _logger.Info("WebSocket server is now running");
-        
     }
 
     public void Stop(string reason, CloseStatusCode closeStatusCode = CloseStatusCode.Normal)
     {
-        if (_webSocketServer != null)
+        if (_webSocketServer == null)
+            return;
+        
+        _logger.Info("Stopping WebSocket server now");
+        
+        Thread closeConnectionsThread = new Thread(() =>
         {
-            _logger.Info("Stopping WebSocket server now");
+            IEnumerator<IWebSocketSession> enumerator = _webSocketServer.WebSocketServices["/call"].Sessions.Sessions.GetEnumerator();
             
-            Thread closeConnectionsThread = new Thread(() =>
+            while (enumerator.MoveNext())
             {
-                IEnumerator<IWebSocketSession> enumerator = _webSocketServer.WebSocketServices["/call"].Sessions.Sessions.GetEnumerator();
+                IWebSocketSession session = enumerator.Current;
+                session.Context.WebSocket.Close();
                 
-                while (enumerator.MoveNext())
-                {
-                    IWebSocketSession session = enumerator.Current;
-                    session.Context.WebSocket.Close();
-                    
-                    Thread.Sleep(50);
-                }
-                
-            });
-            
-            closeConnectionsThread.Start();
-            
-            // wait for the thread to close all sessions
-            closeConnectionsThread.Join();
+                Thread.Sleep(50);
+            }
+        });
+        
+        closeConnectionsThread.Start();
+        
+        // wait for the thread to close all sessions
+        closeConnectionsThread.Join();
 
-            _webSocketServer.Stop(closeStatusCode, reason);
-            _webSocketServer = null;
-            _logger.Info("WebSocket server is now stopped");
-        }
+        _webSocketServer.Stop(closeStatusCode, reason);
+        _webSocketServer = null;
+        _logger.Info("WebSocket server is now stopped");
     }
 
     private void CLIThread()
@@ -141,7 +138,7 @@ public class ServerMain
                     if (args[1].ToLower() == "status")
                     {
                         _logger.Info("Server status: " + (_webSocketServer != null && _webSocketServer.IsListening ? "running" : "N/A"));
-                    } 
+                    }
                     else if (args[1].ToLower() == "start")
                     {
                         if (_webSocketServer != null && _webSocketServer.IsListening)
@@ -164,7 +161,6 @@ public class ServerMain
                         Stop("Manually stopped");
                         _logger.Info("Manually stopped WebSocket server");
                     }
-                    
                     break;
                 
                 case "customer_queue":
@@ -178,7 +174,6 @@ public class ServerMain
                     {
                         Console.WriteLine(" - " + client.ClientId);
                     }
-                    
                     break;
             }
         }

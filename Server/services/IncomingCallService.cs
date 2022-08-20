@@ -102,9 +102,4 @@ public class IncomingCallService : WebSocketBehavior
             client.CallAction(callStatus, channel);
         }
     }
-
-    protected override void OnError(ErrorEventArgs e)
-    {
-        
-    }
 }
