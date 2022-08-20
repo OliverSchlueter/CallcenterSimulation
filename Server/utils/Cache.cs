@@ -29,14 +29,17 @@ public class Cache<I, E>
         {
             foreach (I key in _cacheTimes.Keys)
             {
-                int current = _cacheTimes[key]--;
+                int current = --_cacheTimes[key];
 
                 if (current == 0)
                 {
                     Remove(key);
                 }
                 else
+                {
                     _cacheTimes[key] = current;
+                }
+                
             }
             
             Thread.Sleep(1000);
@@ -86,6 +89,14 @@ public class Cache<I, E>
     public bool Contains(I identifier)
     {
         return _cache.ContainsKey(identifier);
+    }
+
+    public void AutoRemove(I identifier, int time = TimeInCache)
+    {
+        if (!_cache.ContainsKey(identifier) || _cacheTimes.ContainsKey(identifier))
+            return;
+        
+        _cacheTimes.Add(identifier, time);
     }
     
 }

@@ -23,8 +23,8 @@ public class ServerMain
     private Cache<string, Client> _clientCache;
     public Cache<string, Client> ClientCache { get => _clientCache; }
 
-    private Dictionary<string, string> _clientIdSessionId;
-    public Dictionary<string, string> ClientIdSessionId => _clientIdSessionId;
+    private Dictionary<string, string> _SessionIdClientId; // key: sessionId value: clientId
+    public Dictionary<string, string> SessionIdClientId => _SessionIdClientId;
 
     private Cache<string, Client> _unknownClientCache;
     public Cache<string, Client> UnknownClientCache { get => _unknownClientCache; }
@@ -39,7 +39,7 @@ public class ServerMain
     {
         _instance = this;
         _logger = new Utils.Logger(true);
-        _clientIdSessionId = new Dictionary<string, string>();
+        _SessionIdClientId = new Dictionary<string, string>();
         _clientCache = new Cache<string, Client>(false);
         _unknownClientCache = new Cache<string, Client>(false);
         _waitingCustomers = new Dictionary<string, Queue<Client>>();

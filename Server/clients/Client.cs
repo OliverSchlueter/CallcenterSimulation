@@ -5,7 +5,7 @@ namespace Server.Clients;
 public class Client
 {
     private string _sessionID;
-    public string SessionId => _sessionID;
+    public string SessionId { get => _sessionID; set => _sessionID = value; }
     
     private string? _clientID;
     public string? ClientId { get => _clientID; set => _clientID = value; }
