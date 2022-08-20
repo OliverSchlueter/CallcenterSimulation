@@ -10,14 +10,14 @@ public class IncomingCallService : WebSocketBehavior
 {
     protected override void OnOpen()
     {
-        ServerMain.Instance.Logger.Info("New connection with ID: " + ID);
+        ServerMain.Instance.Logger.Info($"[+] Customer - {ID}");
         
         ServerMain.Instance.UnknownClientCache.Put(ID, new Client(ID, null));
     }
 
     protected override void OnClose(CloseEventArgs e)
     {
-        ServerMain.Instance.Logger.Info("Connection quit with ID: " + ID);
+        ServerMain.Instance.Logger.Info($"[-] Customer - {ID}");
     
         if (ServerMain.Instance.ClientCache.Contains(ID))
         {
@@ -32,7 +32,7 @@ public class IncomingCallService : WebSocketBehavior
 
     protected override void OnMessage(MessageEventArgs e)
     {
-        ServerMain.Instance.Logger.Info("New message from " + ID + ": " + e.Data);
+        ServerMain.Instance.Logger.Info($"[MSG] Customer {ID} - {e.Data}");
         Dictionary<string, string>? json = JsonUtils.Deserialize(e.Data);
         if (json == null)
             return;

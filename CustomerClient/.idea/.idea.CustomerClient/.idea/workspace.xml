@@ -5,23 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684d93ee-e033-42c0-acff-9d1ff6e6f350" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Server/clients/Call.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Server/clients/CallStatus.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Server/clients/Role.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/services/EmployeeService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomerClient/CustomerClientApp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/CustomerClientApp.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomerClient/calls/Call.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/calls/Call.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/ServerMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/ServerMain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/clients/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/clients/Client.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/ref/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/ref/Server.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/refint/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/refint/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/services/IncomingCallService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/services/IncomingCallService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +77,8 @@
       <updated>1660830975524</updated>
       <workItem from="1660830975719" duration="12682000" />
       <workItem from="1660889225012" duration="2744000" />
-      <workItem from="1660912819529" duration="6064000" />
+      <workItem from="1660912819529" duration="7572000" />
+      <workItem from="1660997882435" duration="67000" />
     </task>
     <servers />
   </component>

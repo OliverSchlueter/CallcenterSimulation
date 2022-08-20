@@ -52,6 +52,7 @@ public class ServerMain
     {
         _webSocketServer = new WebSocketServer("ws://127.0.0.01:1337");
         _webSocketServer.AddWebSocketService<IncomingCallService>("/call");
+        _webSocketServer.AddWebSocketService<EmployeeService>("/employee");
         _webSocketServer.Start();
         
         _logger.Info("WebSocket server is now running");
