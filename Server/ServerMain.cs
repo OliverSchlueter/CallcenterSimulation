@@ -63,6 +63,27 @@ public class ServerMain
     {
         if (_webSocketServer != null)
         {
+            _logger.Info("Stopping WebSocket server now");
+            
+            Thread closeConnectionsThread = new Thread(() =>
+            {
+                IEnumerator<IWebSocketSession> enumerator = _webSocketServer.WebSocketServices["/call"].Sessions.Sessions.GetEnumerator();
+                
+                while (enumerator.MoveNext())
+                {
+                    IWebSocketSession session = enumerator.Current;
+                    session.Context.WebSocket.Close();
+                    
+                    Thread.Sleep(50);
+                }
+                
+            });
+            
+            closeConnectionsThread.Start();
+            
+            // wait for the thread to close all sessions
+            closeConnectionsThread.Join();
+
             _webSocketServer.Stop(closeStatusCode, reason);
             _webSocketServer = null;
             _logger.Info("WebSocket server is now stopped");

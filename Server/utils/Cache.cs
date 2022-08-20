@@ -3,6 +3,8 @@
 public class Cache<I, E>
 {
     private const int TimeInCache = 60;
+    private const int MaxElementsInCache = 200;
+    
     private readonly Dictionary<I, E> _cache;
     private readonly Dictionary<I, int> _cacheTimes;
     private readonly Thread _cacheThread;
@@ -27,19 +29,17 @@ public class Cache<I, E>
     {
         while (true)
         {
+            // clear cache if max amount is reached
+            bool removeAll = _cacheTimes.Count > MaxElementsInCache;
+
             foreach (I key in _cacheTimes.Keys)
             {
                 int current = --_cacheTimes[key];
 
-                if (current == 0)
-                {
+                if (removeAll || current == 0)
                     Remove(key);
-                }
                 else
-                {
                     _cacheTimes[key] = current;
-                }
-                
             }
             
             Thread.Sleep(1000);
