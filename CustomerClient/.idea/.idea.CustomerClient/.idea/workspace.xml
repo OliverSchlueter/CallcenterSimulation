@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="684d93ee-e033-42c0-acff-9d1ff6e6f350" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/ServerMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/ServerMain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/clients/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/clients/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/ref/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/ref/Server.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/refint/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/refint/Server.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/services/IncomingCallService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/services/IncomingCallService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/utils/Cache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/utils/Cache.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
