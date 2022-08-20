@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomerClient.forms;
 
 namespace CustomerClient.Calls;
 
@@ -16,6 +17,9 @@ public class Call
 
     private CallStatus _callStatus;
     public CallStatus CallStatus { get => _callStatus; set => _callStatus = value; }
+
+    private CallForm _callForm;
+    public CallForm CallForm { get => _callForm; set => _callForm = value; }
 
     public Call()
     {

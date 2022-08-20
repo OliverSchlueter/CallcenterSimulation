@@ -20,7 +20,7 @@ namespace CustomerClient.forms
 
         private void CallForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-         _call.HangUp();   
+            _call.HangUp();   
         }
 
         private void btn_hangUp_Click(object sender, EventArgs e)

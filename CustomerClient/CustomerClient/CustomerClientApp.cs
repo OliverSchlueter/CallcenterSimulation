@@ -76,6 +76,13 @@ namespace CustomerClient
                     failCounter = !WebSocketClient.IsAlive ? ++failCounter : 0;
                 }
 
+                // Customer is calling while server is unreachable
+                if (!WebSocketClient.IsAlive && _callHandler.CurrentCall.CallStatus != CallStatus.None)
+                {
+                    _callHandler.CurrentCall.CallForm.Close();
+                    MessageBox.Show("Connection lost (Server is not responsing)", "Connection lost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 sleep:
                 Thread.Sleep(500);
             }

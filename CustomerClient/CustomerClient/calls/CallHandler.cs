@@ -28,6 +28,7 @@ public class CallHandler
         _currentCall.CallStatus = CallStatus.Calling;
 
         CallForm callForm = new CallForm(_currentCall);
+        _currentCall.CallForm = callForm;
         callForm.Show();
 
         new Thread(CallingBeep).Start();
