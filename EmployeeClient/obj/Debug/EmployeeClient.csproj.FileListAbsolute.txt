@@ -12,3 +12,4 @@ D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\websocket-sha
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\websocket-sharp.xml
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.CopyComplete
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.forms.MainForm.resources
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.forms.CallForm.resources

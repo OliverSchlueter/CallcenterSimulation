@@ -11,7 +11,7 @@ public class IncomingCallService : WebSocketBehavior
     {
         ServerMain.Instance.Logger.Info($"[+] Customer - {ID}");
         
-        ServerMain.Instance.UnknownClientCache.Put(ID, new Client(ID, null));
+        ServerMain.Instance.UnknownClientCache.Put(ID, new Client(ID, null, "/call"));
     }
 
     protected override void OnClose(CloseEventArgs e)

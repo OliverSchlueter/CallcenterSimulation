@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Drawing;
+using EmployeeClient.calls;
 using WebSocketSharp;
 using EmployeeClient.forms;
 
@@ -19,6 +20,9 @@ namespace EmployeeClient
         
         private WebSocket _webSocketClient;
         public WebSocket WebSocketClient => _webSocketClient; 
+        
+        private CallHandler _callHandler;
+        public CallHandler CallHandler => _callHandler;
 
         public EmployeeClientApp()
         {
@@ -29,7 +33,7 @@ namespace EmployeeClient
             _clientId = LoadOrGetClientId();
             
             _webSocketClient = new WebSocket("ws://127.0.0.1:1337/employee");
-            _webSocketClient.OnMessage += (sender, args) => Console.WriteLine("MSG: " + args.Data); 
+            _webSocketClient.OnMessage += OnWebSocketMessage; 
             _webSocketClient.Connect();
             SendClientId();
             
@@ -42,6 +46,8 @@ namespace EmployeeClient
                 _webSocketClient = null;
                 Environment.Exit(0);
             };
+
+            _callHandler = new CallHandler();
         }
         
         private void ConnectionThread()
@@ -115,6 +121,11 @@ namespace EmployeeClient
             MainForm.Instance.lbl_Id.Text = $"Your ID: {_clientId}";
 
             return _clientId;
+        }
+
+        private void OnWebSocketMessage(object sender, MessageEventArgs args)
+        {
+            Console.WriteLine("[MSG] " + args.Data);
         }
     }
 }

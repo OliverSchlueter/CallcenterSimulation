@@ -18,13 +18,13 @@ public class Client
     private CallStatus _callStatus;
     public CallStatus CallStatus { get => _callStatus; set => _callStatus = value; }
     
-    public Client(string sessionId, string? clientId, Role role = Role.Unknown)
+    public Client(string sessionId, string? clientId, string service, Role role = Role.Unknown)
     {
         _sessionId = sessionId;
         _clientId = clientId;
         _callStatus = CallStatus.None;
         _role = role;
-        _session = ServerMain.Instance.WebSocketServer.WebSocketServices["/call"].Sessions[sessionId].Context.WebSocket;
+        _session = ServerMain.Instance.WebSocketServer.WebSocketServices[service].Sessions[sessionId].Context.WebSocket;
     }
 
     public void CallAction(CallStatus callStatus, string? channel)
@@ -71,7 +71,7 @@ public class Client
         {
             // TODO: search in all waiting queues
         }
-        else if (ServerMain.Instance.WaitingCustomers[channel].Contains(this))
+        else if (ServerMain.Instance.WaitingCustomers[channel.ToLower()].Contains(this))
         {
             // TODO: remove from waiting customers
         }
@@ -87,7 +87,7 @@ public class Client
         if (_role != Role.Employee)
             return;
                 
-        if (ServerMain.Instance.WaitingCustomers[channel.ToLower()].Count == 0)
+        if (!ServerMain.Instance.WaitingCustomers.ContainsKey(channel) || ServerMain.Instance.WaitingCustomers[channel.ToLower()].Count == 0)
         {
             //TODO: send to employee that there are no waiting customers
             return;

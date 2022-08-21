@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace EmployeeClient.forms
 {
@@ -20,6 +21,11 @@ namespace EmployeeClient.forms
         private void cb_channel_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void btn_call_Click(object sender, EventArgs e)
+        {
+            EmployeeClientApp.Instance.CallHandler.Call(cb_channel.Text);
         }
     }
 }

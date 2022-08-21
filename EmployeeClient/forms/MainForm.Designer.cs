@@ -73,6 +73,7 @@
             this.btn_call.TabIndex = 3;
             this.btn_call.Text = "Next Call";
             this.btn_call.UseVisualStyleBackColor = true;
+            this.btn_call.Click += new System.EventHandler(this.btn_call_Click);
             // 
             // MainForm
             // 

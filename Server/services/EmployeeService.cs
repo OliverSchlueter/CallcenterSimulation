@@ -10,8 +10,8 @@ public class EmployeeService : WebSocketBehavior
     protected override void OnOpen()
     {
         ServerMain.Instance.Logger.Info($"[+] Employee - {ID}");
-        
-        ServerMain.Instance.UnknownClientCache.Put(ID, new Client(ID, null));
+
+        ServerMain.Instance.UnknownClientCache.Put(ID, new Client(ID, null, "/employee"));
     }
 
     protected override void OnMessage(MessageEventArgs e)
