@@ -32,19 +32,22 @@ public class Client
         switch (callStatus)
         {
             case CallStatus.Calling:
-                if (channel == null)
-                    return;
-                
                 JoinCallQueue(channel);
                 break;
             case CallStatus.HangUp:
                 HangUp(channel);
                 break;
+            case CallStatus.Pull:
+                PullCustomer(channel);
+                break;
         }
     }
 
-    private void JoinCallQueue(string channel)
+    private void JoinCallQueue(string? channel)
     {
+        if (channel == null)
+            return;
+        
         // create queue for channel if not exists
         if (!ServerMain.Instance.WaitingCustomers.ContainsKey(channel.ToLower()))
             ServerMain.Instance.WaitingCustomers.Add(channel.ToLower(), new Queue<Client>());
@@ -74,5 +77,25 @@ public class Client
         }
         
         _callStatus = CallStatus.HangUp;
+    }
+
+    private void PullCustomer(string? channel)
+    {
+        if (channel == null)
+            return;
+
+        if (_role != Role.Employee)
+            return;
+                
+        if (ServerMain.Instance.WaitingCustomers[channel.ToLower()].Count == 0)
+        {
+            //TODO: send to employee that there are no waiting customers
+            return;
+        }
+
+        Client customer = ServerMain.Instance.WaitingCustomers[channel.ToLower()].Dequeue();
+                
+        Call call = new Call(this, customer);
+        call.Start();
     }
 }

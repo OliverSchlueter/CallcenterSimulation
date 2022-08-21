@@ -8,7 +8,7 @@ D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClien
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.CoreCompileInputs.cache
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.exe
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.pdb
-D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.MainForm.resources
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\websocket-sharp.dll
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\websocket-sharp.xml
 D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.CopyComplete
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.forms.MainForm.resources

@@ -2,7 +2,6 @@
 using Server.Utils;
 using WebSocketSharp;
 using WebSocketSharp.Server;
-using ErrorEventArgs = WebSocketSharp.ErrorEventArgs;
 
 namespace Server.Services;
 
