@@ -1,0 +1,14 @@
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\EmployeeClient.exe.config
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\EmployeeClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\EmployeeClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.AssemblyReference.cache
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.SuggestedBindingRedirects.cache
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.Properties.Resources.resources
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.GenerateResource.cache
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.CoreCompileInputs.cache
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.exe
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.MainForm.resources
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\websocket-sharp.dll
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\bin\Debug\websocket-sharp.xml
+D:\Workspaces\GitHub\CallcenterSimulation\EmployeeClient\obj\Debug\EmployeeClient.csproj.CopyComplete

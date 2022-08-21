@@ -5,7 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684d93ee-e033-42c0-acff-9d1ff6e6f350" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../EmployeeClient/EmployeeClientApp.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EmployeeClient/forms/MainForm.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EmployeeClient/forms/MainForm.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CustomerClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/bin/Debug/CustomerClient.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.exe" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerClient/obj/Debug/CustomerClient.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/EmployeeClient.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeClient/EmployeeClient.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/EmployeeClient.csproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/EmployeeClient.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeClient/EmployeeClient.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/Form1.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/Form1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../EmployeeClient/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/bin/Debug/net6.0-windows/EmployeeClient.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/bin/Debug/net6.0-windows/EmployeeClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/bin/Debug/net6.0-windows/EmployeeClient.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/bin/Debug/net6.0-windows/EmployeeClient.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/bin/Debug/net6.0-windows/EmployeeClient.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/EmployeeClient.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/apphost.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/ref/EmployeeClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/Debug/net6.0-windows/refint/EmployeeClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/EmployeeClient.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/EmployeeClient.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/EmployeeClient.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EmployeeClient/obj/rider.project.restore.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/Server.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/ref/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/ref/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/refint/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/obj/Debug/net6.0/refint/Server.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +111,7 @@
       <workItem from="1660912819529" duration="7572000" />
       <workItem from="1660997882435" duration="118000" />
       <workItem from="1660998019666" duration="1639000" />
+      <workItem from="1661069554156" duration="1110000" />
     </task>
     <servers />
   </component>
