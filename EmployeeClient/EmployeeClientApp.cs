@@ -82,6 +82,17 @@ namespace EmployeeClient
                         break;
                 }
             }
+
+            if (json.ContainsKey("call_message") && _callHandler.CurrentCall != null && _callHandler.CurrentCall.CallStatus == CallStatus.InCall)
+            {
+                string[] callMessage = json["call_message"].ToString().Split(':');
+
+                if (callMessage[0] == "chat")
+                {
+                    _callHandler.CurrentCall.CallForm.rtb_chatLog.Text += $"Partner: {callMessage[1]}\n";
+                }
+                
+            }
         }
         
         private void ConnectionThread()

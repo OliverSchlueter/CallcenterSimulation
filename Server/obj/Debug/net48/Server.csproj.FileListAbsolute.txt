@@ -1,0 +1,6 @@
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net48\Server.csproj.AssemblyReference.cache
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net48\Server.csproj.SuggestedBindingRedirects.cache
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net48\Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net48\Server.AssemblyInfoInputs.cache
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net48\Server.AssemblyInfo.cs
+D:\Workspaces\GitHub\CallcenterSimulation\Server\obj\Debug\net48\Server.csproj.CoreCompileInputs.cache

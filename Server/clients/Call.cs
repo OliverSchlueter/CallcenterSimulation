@@ -1,6 +1,4 @@
-﻿using WebSocketSharp;
-
-namespace Server.Clients;
+﻿namespace Server.Clients;
 
 public class Call
 {
@@ -58,5 +56,14 @@ public class Call
         
         ServerMain.Instance.CurrentCalls.Remove(_customer);
         ServerMain.Instance.CurrentCalls.Remove(_employee);
+    }
+
+    public void Send(Client sender, string message)
+    {
+        Client receiver = sender.ClientId == _customer.ClientId ? _employee : _customer;
+        
+        receiver.Session.Send("{\"call_message_from\": \"%senderId%\", \"call_message\": \"%data%\"}"
+            .Replace("%senderId%", sender.ClientId)
+            .Replace("%data%", message));
     }
 }

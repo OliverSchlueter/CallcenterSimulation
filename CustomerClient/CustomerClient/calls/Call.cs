@@ -64,6 +64,11 @@ public class Call
         
         _callForm.Close();
     }
+
+    public void SendMessage(string message)
+    {
+        CustomerClientApp.Instance.WebSocketClient.Send("{\"call_message\": \"%message%\"}".Replace("%message%", message));
+    }
 }
 
 public class CallAcceptedEventArgs : EventArgs

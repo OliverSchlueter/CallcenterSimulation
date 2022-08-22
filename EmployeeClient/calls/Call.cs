@@ -36,6 +36,8 @@ namespace EmployeeClient.calls
             _partnerId = partnerId;
             _callForm.lbl_status.Text = "Status: " + _callStatus.ToString();
             _callForm.lbl_customer.Text = "Customer: " + partnerId;
+            _callForm.btn_chatSend.Enabled = true;
+            _callForm.tb_chat.Enabled = true;
         }
         
         public void HangUp()
@@ -54,6 +56,11 @@ namespace EmployeeClient.calls
             _callStatus = CallStatus.None;
             
             _callForm.Close();
+        }
+        
+        public void SendMessage(string message)
+        {
+            EmployeeClientApp.Instance.WebSocketClient.Send("{\"call_message\": \"%message%\"}".Replace("%message%", message));
         }
     }
 }
