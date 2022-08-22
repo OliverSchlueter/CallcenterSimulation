@@ -11,7 +11,7 @@ public class ServerMain
     private static ServerMain _instance;
     public static ServerMain Instance => _instance;
 
-    public const string Version = "0.0.2-ALPHA";
+    public const string Version = "1.0.0-rc.1";
 
     private readonly Utils.Logger _logger;
     public Utils.Logger Logger => _logger;
