@@ -7,6 +7,7 @@ using System.Drawing;
 using EmployeeClient.calls;
 using WebSocketSharp;
 using EmployeeClient.forms;
+using Newtonsoft.Json.Linq;
 
 namespace EmployeeClient
 {
@@ -48,6 +49,39 @@ namespace EmployeeClient
             };
 
             _callHandler = new CallHandler();
+        }
+        
+        private void OnWebSocketMessage(object sender, MessageEventArgs args)
+        {
+            Console.WriteLine("[MSG] " + args.Data);
+
+            JObject json = JsonUtil.Deserialize(args.Data);
+            
+            if(json == null)
+                return;
+            
+            if (json.ContainsKey("call_status"))
+            {
+
+                CallStatus callStatus;
+                CallStatus.TryParse(json["call_status"].ToString(), true, out callStatus);
+
+                switch (callStatus)
+                {
+                    case CallStatus.InCall:
+                        if (!json.ContainsKey("call_partner"))
+                            return;
+                        
+                        string partnerId = json["call_partner"].ToString();
+                        
+                        _callHandler.CurrentCall.Pulled(partnerId);
+                        break;
+                    case CallStatus.HangUp:
+                        Console.WriteLine("HANG UP");
+                        _callHandler.CurrentCall.HangUp();
+                        break;
+                }
+            }
         }
         
         private void ConnectionThread()
@@ -121,11 +155,6 @@ namespace EmployeeClient
             MainForm.Instance.lbl_Id.Text = $"Your ID: {_clientId}";
 
             return _clientId;
-        }
-
-        private void OnWebSocketMessage(object sender, MessageEventArgs args)
-        {
-            Console.WriteLine("[MSG] " + args.Data);
         }
     }
 }

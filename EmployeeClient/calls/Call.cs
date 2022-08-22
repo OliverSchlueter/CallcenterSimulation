@@ -6,6 +6,7 @@ namespace EmployeeClient.calls
     {
         Pulling,
         InCall,
+        HangUp,
         None
     }
 
@@ -17,6 +18,9 @@ namespace EmployeeClient.calls
         private CallStatus _callStatus;
         public CallStatus CallStatus { get => _callStatus; set => _callStatus = value; }
 
+        private string _partnerId;
+        public string PartnerId => _partnerId;
+
         private CallForm _callForm;
         public CallForm CallForm { get => _callForm; set => _callForm = value; }
         
@@ -26,10 +30,12 @@ namespace EmployeeClient.calls
             _callStatus = CallStatus.Pulling;
         }
 
-        public void Pulled()
+        public void Pulled(string partnerId)
         {
             _callStatus = CallStatus.InCall;
-            _callForm.lbl_status.Text = _callStatus.ToString();
+            _partnerId = partnerId;
+            _callForm.lbl_status.Text = "Status: " + _callStatus.ToString();
+            _callForm.lbl_customer.Text = "Customer: " + partnerId;
         }
         
         public void HangUp()
@@ -46,6 +52,8 @@ namespace EmployeeClient.calls
         
             _channel = "";
             _callStatus = CallStatus.None;
+            
+            _callForm.Close();
         }
     }
 }

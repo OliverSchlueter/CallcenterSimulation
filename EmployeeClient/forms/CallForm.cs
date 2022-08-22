@@ -19,7 +19,8 @@ namespace EmployeeClient.forms
 
         private void CallForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _call.HangUp();   
+            if(_call.CallStatus == CallStatus.InCall)
+                _call.HangUp();
         }
 
         private void btn_hangUp_Click(object sender, EventArgs e)

@@ -48,7 +48,7 @@ namespace EmployeeClient.forms
             // 
             // btn_hangUp
             // 
-            this.btn_hangUp.Location = new System.Drawing.Point(12, 131);
+            this.btn_hangUp.Location = new System.Drawing.Point(106, 118);
             this.btn_hangUp.Name = "btn_hangUp";
             this.btn_hangUp.Size = new System.Drawing.Size(156, 34);
             this.btn_hangUp.TabIndex = 1;
@@ -59,7 +59,7 @@ namespace EmployeeClient.forms
             // lbl_status
             // 
             this.lbl_status.AutoSize = true;
-            this.lbl_status.Location = new System.Drawing.Point(12, 27);
+            this.lbl_status.Location = new System.Drawing.Point(13, 45);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(85, 18);
             this.lbl_status.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace EmployeeClient.forms
             // lbl_customer
             // 
             this.lbl_customer.AutoSize = true;
-            this.lbl_customer.Location = new System.Drawing.Point(12, 45);
+            this.lbl_customer.Location = new System.Drawing.Point(12, 27);
             this.lbl_customer.Name = "lbl_customer";
             this.lbl_customer.Size = new System.Drawing.Size(73, 18);
             this.lbl_customer.TabIndex = 3;
@@ -79,7 +79,7 @@ namespace EmployeeClient.forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(180, 177);
+            this.ClientSize = new System.Drawing.Size(367, 177);
             this.Controls.Add(this.lbl_customer);
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.btn_hangUp);
