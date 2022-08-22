@@ -76,6 +76,13 @@ public class ServerMain
                 Thread.Sleep(50);
             }
         });
+            
+        _clientCache.Clear();
+        _unknownClientCache.Clear();
+        _currentCalls.Clear();
+        _sessionIdClientId.Clear();
+        _waitingCustomers.Clear();
+        
         
         closeConnectionsThread.Start();
         

@@ -98,5 +98,11 @@ public class Cache<I, E>
         
         _cacheTimes.Add(identifier, time);
     }
+
+    public void Clear()
+    {
+        _cache.Clear();
+        _cacheTimes.Clear();
+    }
     
 }
