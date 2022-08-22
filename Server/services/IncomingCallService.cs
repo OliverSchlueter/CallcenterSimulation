@@ -100,5 +100,14 @@ public class IncomingCallService : WebSocketBehavior
 
             client.CallAction(callStatus, channel);
         }
+
+        if (client != null && json.ContainsKey("call_message"))
+        {
+            if (!ServerMain.Instance.CurrentCalls.ContainsKey(client))
+                return;
+
+            Call call = ServerMain.Instance.CurrentCalls[client];
+            call.Send(client, json["call_message"]);
+        }
     }
 }
