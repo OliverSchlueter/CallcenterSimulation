@@ -11,7 +11,7 @@ public class ServerMain
     private static ServerMain _instance;
     public static ServerMain Instance => _instance;
 
-    public const string Version = "1.0.0-rc.1";
+    public const string Version = "1.1.0-rc.1";
 
     private readonly Utils.Logger _logger;
     public Utils.Logger Logger => _logger;
@@ -50,6 +50,7 @@ public class ServerMain
     public void Start()
     {
         _webSocketServer = new WebSocketServer("ws://127.0.0.01:1337");
+        _webSocketServer.KeepClean = true;
         _webSocketServer.AddWebSocketService<IncomingCallService>("/call");
         _webSocketServer.AddWebSocketService<EmployeeService>("/employee");
         _webSocketServer.Start();
@@ -168,6 +169,19 @@ public class ServerMain
                         Stop("Manually stopped");
                         _logger.Info("Manually stopped WebSocket server");
                     }
+                    else if (args[1].ToLower() == "restart")
+                    {
+                        _logger.Info("Manually restarting WebSocket server");
+                        if (_webSocketServer == null || !_webSocketServer.IsListening)
+                            Start();
+                        else
+                        {
+                            Stop("Server is restarting");
+                            Thread.Sleep(1000);
+                            Start();
+                        }
+                    }
+
                     break;
                 
                 case "customer_queue":
