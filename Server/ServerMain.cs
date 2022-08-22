@@ -11,7 +11,9 @@ public class ServerMain
     private static ServerMain _instance;
     public static ServerMain Instance => _instance;
 
-    public const string Version = "1.1.0-rc.1";
+    public const string Version = "1.1.1-rc.1";
+
+    private const int AutoRestartDelay = 60*6; // in minutes
 
     private readonly Utils.Logger _logger;
     public Utils.Logger Logger => _logger;
@@ -44,6 +46,7 @@ public class ServerMain
         _waitingCustomers = new Dictionary<string, Queue<Client>>();
         _currentCalls = new Dictionary<Client, Call>();
         
+        new Thread(AutoRestartThread).Start();
         new Thread(CLIThread).Start();
     }
 
@@ -54,7 +57,6 @@ public class ServerMain
         _webSocketServer.AddWebSocketService<IncomingCallService>("/call");
         _webSocketServer.AddWebSocketService<EmployeeService>("/employee");
         _webSocketServer.Start();
-        
         _logger.Info("WebSocket server is now running");
     }
 
@@ -77,24 +79,50 @@ public class ServerMain
                 Thread.Sleep(50);
             }
         });
-            
-        _clientCache.Clear();
-        _unknownClientCache.Clear();
-        _currentCalls.Clear();
-        _sessionIdClientId.Clear();
-        _waitingCustomers.Clear();
-        
         
         closeConnectionsThread.Start();
         
         // wait for the thread to close all sessions
         closeConnectionsThread.Join();
+        
+        _clientCache.Clear();
+        _unknownClientCache.Clear();
+        _currentCalls.Clear();
+        _sessionIdClientId.Clear();
+        _waitingCustomers.Clear();
 
         _webSocketServer.Stop(closeStatusCode, reason);
         _webSocketServer = null;
         _logger.Info("WebSocket server is now stopped");
     }
 
+    private void AutoRestartThread()
+    {
+        Thread.Sleep(1000*60*AutoRestartDelay);
+        
+        while (true)
+        {
+            Logger.Info("Automatically restarting server.");
+            DateTime restartStart = DateTime.Now;
+
+            if(_webSocketServer == null || !_webSocketServer.IsListening)
+                Start();
+            else
+            {
+                Stop("Auto restarting server");
+                Thread.Sleep(5000);
+                Start();
+            }
+            
+            DateTime restartEnd = DateTime.Now;
+            TimeSpan timeDifference = restartEnd.Subtract(restartStart);
+            
+            _logger.Info("Auto restart took " + timeDifference.Seconds + " seconds. Next auto restart: " + restartEnd.AddMinutes(AutoRestartDelay));
+            
+            Thread.Sleep(1000*60*AutoRestartDelay);
+        }
+    }
+    
     private void CLIThread()
     {
         while (true)
