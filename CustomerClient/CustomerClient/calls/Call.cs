@@ -7,6 +7,7 @@ public enum CallStatus
 {
     Calling,
     InCall,
+    HangUp,
     None
 }
 
@@ -18,6 +19,9 @@ public class Call
     private CallStatus _callStatus;
     public CallStatus CallStatus { get => _callStatus; set => _callStatus = value; }
 
+    private string _partnerId;
+    public string PartnerId => _partnerId;
+
     private CallForm _callForm;
     public CallForm CallForm { get => _callForm; set => _callForm = value; }
 
@@ -27,8 +31,9 @@ public class Call
         _callStatus = CallStatus.None;
     }
 
-    public void CallAccepted()
+    public void CallAccepted(string partnerId)
     {
+        _partnerId = partnerId;
         _callStatus = CallStatus.InCall;
         OnCallAccepted(new CallAcceptedEventArgs(_channel, _callStatus));
     }
@@ -38,7 +43,6 @@ public class Call
         EventHandler<CallAcceptedEventArgs> eventHandler = CallAcceptedEvent;
         if (eventHandler != null) 
             eventHandler(this, e);
-        
     }
 
     public event EventHandler<CallAcceptedEventArgs> CallAcceptedEvent; 
@@ -57,6 +61,8 @@ public class Call
         
         _channel = "";
         _callStatus = CallStatus.None;
+        
+        _callForm.Close();
     }
 }
 

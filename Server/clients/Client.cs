@@ -11,6 +11,7 @@ public class Client
     public string? ClientId { get => _clientId; set => _clientId = value; }
 
     private readonly WebSocket _session;
+    public WebSocket Session => _session;
     
     private Role _role;
     public Role Role { get => _role; set => _role = value; }
@@ -87,15 +88,15 @@ public class Client
         if (_role != Role.Employee)
             return;
                 
-        if (!ServerMain.Instance.WaitingCustomers.ContainsKey(channel) || ServerMain.Instance.WaitingCustomers[channel.ToLower()].Count == 0)
+        if (!ServerMain.Instance.WaitingCustomers.ContainsKey(channel.ToLower()) || ServerMain.Instance.WaitingCustomers[channel.ToLower()].Count == 0)
         {
-            //TODO: send to employee that there are no waiting customers
+            _session.Send("{\"call_status\": \"no_customer\"}");
             return;
         }
 
         Client customer = ServerMain.Instance.WaitingCustomers[channel.ToLower()].Dequeue();
                 
-        Call call = new Call(this, customer);
+        Call call = new Call(customer, this);
         call.Start();
     }
 }

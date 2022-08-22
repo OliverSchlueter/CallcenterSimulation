@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Drawing;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Windows.Forms;
 using CustomerClient.forms;
 using WebSocketSharp;
 using CustomerClient.Calls;
+using Newtonsoft.Json.Linq;
 
 namespace CustomerClient
 {
@@ -34,7 +36,7 @@ namespace CustomerClient
             _clientId = LoadOrGetClientId();
             
             _webSocketClient = new WebSocket("ws://127.0.0.1:1337/call");
-            _webSocketClient.OnMessage += (sender, args) => Console.WriteLine("MSG: " + args.Data); 
+            _webSocketClient.OnMessage += OnServerMessage; 
             _webSocketClient.Connect();
             SendClientId();
 
@@ -49,6 +51,39 @@ namespace CustomerClient
             };
 
             _callHandler = new CallHandler();
+        }
+
+        private void OnServerMessage(object sender, MessageEventArgs args)
+        {
+            Console.WriteLine($"[MSG]: {args.Data}");
+            JObject json = JsonUtil.Deserialize(args.Data);
+
+            if (json == null)
+                return;
+
+            if (json.ContainsKey("call_status"))
+            {
+
+                CallStatus callStatus;
+                CallStatus.TryParse(json["call_status"].ToString(), true, out callStatus);
+
+                switch (callStatus)
+                {
+                    case CallStatus.InCall:
+                        if (!json.ContainsKey("call_partner"))
+                            return;
+                        
+                        string partnerId = json["call_partner"].ToString();
+                        
+                        _callHandler.CurrentCall.CallAccepted(partnerId);
+                        break;
+                    case CallStatus.HangUp:
+                        Console.WriteLine("HANG UP");
+                        _callHandler.CurrentCall.HangUp();
+                        break;
+                }
+            }
+            
         }
 
         private void ConnectionThread()

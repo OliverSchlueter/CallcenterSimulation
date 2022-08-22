@@ -28,3 +28,5 @@ D:\Workspace\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug
 D:\Workspace\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.csproj.CopyComplete
 D:\Workspace\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.exe
 D:\Workspace\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\obj\Debug\CustomerClient.pdb
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\Newtonsoft.Json.dll
+D:\Workspaces\GitHub\CallcenterSimulation\CustomerClient\CustomerClient\bin\Debug\Newtonsoft.Json.xml

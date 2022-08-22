@@ -15,18 +15,22 @@ namespace CustomerClient.forms
             lbl_status.Text = $"Status: {call.CallStatus.ToString().ToLower()}";
 
             _call.CallAcceptedEvent += (sender, args) =>
+            {
                 lbl_status.Text = $"Status: {args.Status.ToString().ToLower()}";
+                lbl_partner.Text = $"Partner: {call.PartnerId}";
+            };
         }
 
         private void CallForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _call.HangUp();   
+            if (_call.CallStatus == CallStatus.InCall)
+                    _call.HangUp();
         }
 
         private void btn_hangUp_Click(object sender, EventArgs e)
         {
             // closing will cause to run CallForm_FormClosing
-            Close();
+            _call.HangUp();
         }
     }
 }
