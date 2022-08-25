@@ -48,6 +48,7 @@ public class ServerMain
         
         new Thread(AutoRestartThread).Start();
         new Thread(CLIThread).Start();
+        new Thread(CheckClientConnectionThread).Start();
     }
 
     public void Start()
@@ -122,6 +123,48 @@ public class ServerMain
             Thread.Sleep(1000*60*AutoRestartDelay);
         }
     }
+
+    private void CheckClientConnectionThread()
+    {
+        while (true)
+        {
+            foreach (var client in _clientCache.GetAll())
+            {
+                switch (client.Role)
+                {
+                    case Role.Customer:
+                        bool ping = _webSocketServer.WebSocketServices["/call"].Sessions.PingTo(client.SessionId);
+                        if (!ping)
+                        {
+                            if (_currentCalls.ContainsKey(client))
+                                _currentCalls[client].Stop(client);
+
+                            if (_waitingCustomers.ContainsKey(client.ClientId))
+                                _waitingCustomers.Remove(client.ClientId);
+
+                            _sessionIdClientId.Remove(client.SessionId);
+                            _clientCache.Remove(client.ClientId);
+                        }
+                        break;
+                    
+                    case Role.Employee:
+                        break;
+                }
+            }
+            
+            foreach (var client in _unknownClientCache.GetAll())
+            {
+                bool ping = _webSocketServer.WebSocketServices["/call"].Sessions.PingTo(client.SessionId);
+                if (!ping)
+                {
+                    _unknownClientCache.Remove(client.SessionId);
+                }
+            }
+
+            Thread.Sleep(1000*30);
+        }
+    }
+  
     
     private void CLIThread()
     {

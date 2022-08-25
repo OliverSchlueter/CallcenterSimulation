@@ -37,4 +37,6 @@ static void stressTest()
 }
 
 Console.Title = "CallcenterSimulation | TestClient";
-oneClient();
+stressTest();
+stressTest();
+stressTest();
