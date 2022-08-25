@@ -7,6 +7,8 @@ public class Cache<I, E>
     
     private readonly Dictionary<I, E> _cache;
     private readonly Dictionary<I, int> _cacheTimes;
+    private readonly Dictionary<string, Dictionary<dynamic, List<E>>> _indexes;
+    private readonly Dictionary<string, Type> _indexTypes;
     private readonly Thread _cacheThread;
     private readonly bool _autoRemove;
 
@@ -15,6 +17,8 @@ public class Cache<I, E>
         _autoRemove = autoRemove;
         _cache = new Dictionary<I, E>();
         _cacheTimes = new Dictionary<I, int>();
+        _indexes = new Dictionary<string, Dictionary<dynamic, List<E>>>();
+        _indexTypes = new Dictionary<string, Type>();
         
         _cacheThread = new Thread(CacheThread);
         _cacheThread.Start();
@@ -103,6 +107,64 @@ public class Cache<I, E>
     {
         _cache.Clear();
         _cacheTimes.Clear();
+    }
+
+    /// <summary>
+    /// Create multiple indexes for faster searching
+    /// </summary>
+    /// <param name="func">Function to map new index -> element</param>
+    /// <param name="indexName">Name of the new index</param>
+    /// <typeparam name="S">Index identifier type</typeparam>
+    public void AddIndex<T>(string indexName, Func<E, T> mapFunc)
+    {
+        Dictionary<object, List<E>> index = new Dictionary<object, List<E>>();
+        
+        foreach (var kvp in _cache)
+        {
+            object identifier = mapFunc(kvp.Value);
+            E element = kvp.Value;
+            
+            if (index.ContainsKey(identifier))
+            {
+                index[identifier].Add(element);   
+            }
+            else
+            {
+                List<E> list = new List<E>();
+                list.Add(element);
+                index.Add(identifier, list);
+            }
+        }
+        
+        _indexes.Add(indexName, index);
+        _indexTypes.Add(indexName, typeof(T));
+    }
+
+    public List<E> GetFromIndex(string indexName, object identifier)
+    {
+        if (!_indexes.ContainsKey(indexName))
+            throw new NullReferenceException("Index does not exists");
+
+        Dictionary<object, List<E>> index = _indexes[indexName];
+        Type type = _indexTypes[indexName];
+
+        if (identifier.GetType() != type)
+            throw new Exception("Type of provided identifier does not match type of identifier from index");
+
+        if (!index.ContainsKey(identifier))
+            throw new NullReferenceException("Could not find element in index");
+
+        return index[identifier];
+    }
+
+    public E GetFirstFromIndex(string indexName, object identifier)
+    {
+        List<E> list = GetFromIndex(indexName, identifier);
+
+        if (list.Count == 0)
+            throw new NullReferenceException("Could not find element in index");
+
+        return list[0];
     }
     
 }

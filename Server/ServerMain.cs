@@ -42,6 +42,7 @@ public class ServerMain
         _logger = new Utils.Logger(true);
         _sessionIdClientId = new Dictionary<string, string>();
         _clientCache = new Cache<string, Client>(false);
+        _clientCache.AddIndex("SessionId", client => { return client.SessionId; } );
         _unknownClientCache = new Cache<string, Client>(false);
         _waitingCustomers = new Dictionary<string, Queue<Client>>();
         _currentCalls = new Dictionary<Client, Call>();
