@@ -6,20 +6,29 @@ public class Cache<I, E>
     private const int MaxElementsInCache = 200;
     
     private readonly Dictionary<I, E> _cache;
-    private readonly Dictionary<I, int> _cacheTimes;
+
     private readonly Dictionary<string, Dictionary<dynamic, List<E>>> _indexes;
     private readonly Dictionary<string, Type> _indexTypes;
-    private readonly Thread _cacheThread;
-    private readonly bool _autoRemove;
+    
+    private readonly bool _useLFU;
+    private readonly LinkedList<E> _leastFrequentlyUsed; // supporting LFU and LRU cache combined, since it's a doubly linked list
+    public LinkedList<E> LeastFrequentlyUsed => _leastFrequentlyUsed;
 
-    public Cache(bool autoRemove = false)
+    private readonly bool _autoRemove;
+    private readonly Dictionary<I, int> _cacheTimes;
+    private readonly Thread _cacheThread;
+
+    public Cache(bool useLFU = false, bool autoRemove = false)
     {
         _autoRemove = autoRemove;
         _cache = new Dictionary<I, E>();
         _cacheTimes = new Dictionary<I, int>();
         _indexes = new Dictionary<string, Dictionary<dynamic, List<E>>>();
         _indexTypes = new Dictionary<string, Type>();
-        
+        _useLFU = useLFU;
+
+        _leastFrequentlyUsed = new LinkedList<E>();
+
         _cacheThread = new Thread(CacheThread);
         _cacheThread.Start();
     }
@@ -62,12 +71,18 @@ public class Cache<I, E>
         
         if(_autoRemove || autoRemove) 
             _cacheTimes.Add(identifier, TimeInCache);
+        
+        if(_useLFU) 
+            _leastFrequentlyUsed.AddFirst(element);
     }
 
     public void Remove(I identifier)
     {
         if (!Contains(identifier))
             return;
+
+        if(_useLFU) 
+            _leastFrequentlyUsed.Remove(Get(identifier));
 
         _cache.Remove(identifier);
         _cacheTimes.Remove(identifier);
@@ -76,8 +91,19 @@ public class Cache<I, E>
     public E Get(I identifier)
     {
         if (Contains(identifier))
-            return _cache[identifier];
-
+        {
+            E element = _cache[identifier];
+            
+            // Moving the element to the top
+            if (_useLFU)
+            {
+                _leastFrequentlyUsed.Remove(element);
+                _leastFrequentlyUsed.AddFirst(element);
+            }
+            
+            return element;    
+        }
+        
         throw new NullReferenceException();
     }
 
@@ -107,6 +133,7 @@ public class Cache<I, E>
     {
         _cache.Clear();
         _cacheTimes.Clear();
+        _leastFrequentlyUsed.Clear();
     }
 
     /// <summary>
@@ -154,7 +181,19 @@ public class Cache<I, E>
         if (!index.ContainsKey(identifier))
             throw new NullReferenceException("Could not find element in index");
 
-        return index[identifier];
+        List<E> elements = index[identifier];
+        
+        if (_useLFU)
+        {
+            // Move elements to the top
+            foreach (var element in elements)
+            {
+                _leastFrequentlyUsed.Remove(element);
+                _leastFrequentlyUsed.AddFirst(element);
+            }
+        }
+
+        return elements;
     }
 
     public E GetFirstFromIndex(string indexName, object identifier)
