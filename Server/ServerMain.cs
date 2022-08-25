@@ -21,6 +21,9 @@ public class ServerMain
     private WebSocketServer? _webSocketServer;
     public WebSocketServer? WebSocketServer => _webSocketServer;
 
+    private bool _isStopping;
+    public bool IsStopping => _isStopping;
+
     private readonly Cache<string, Client> _clientCache;
     public Cache<string, Client> ClientCache => _clientCache;
 
@@ -40,6 +43,7 @@ public class ServerMain
     {
         _instance = this;
         _logger = new Utils.Logger(true);
+        _isStopping = false;
         _sessionIdClientId = new Dictionary<string, string>();
         _clientCache = new Cache<string, Client>(false);
         _clientCache.AddIndex("SessionId", client => { return client.SessionId; } );
@@ -54,6 +58,7 @@ public class ServerMain
 
     public void Start()
     {
+        _isStopping = false;
         _webSocketServer = new WebSocketServer("ws://127.0.0.01:1337");
         _webSocketServer.KeepClean = true;
         _webSocketServer.AddWebSocketService<IncomingCallService>("/call");
@@ -68,6 +73,8 @@ public class ServerMain
             return;
         
         _logger.Info("Stopping WebSocket server now");
+
+        _isStopping = true;
         
         Thread closeConnectionsThread = new Thread(() =>
         {

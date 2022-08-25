@@ -9,8 +9,14 @@ public class IncomingCallService : WebSocketBehavior
 {
     protected override void OnOpen()
     {
-        ServerMain.Instance.Logger.Info($"[+] Customer - {ID}");
+        if (ServerMain.Instance.IsStopping)
+        {
+            Context.WebSocket.Close(CloseStatusCode.Away, "Server is about to stop");
+            return;
+        }
         
+        ServerMain.Instance.Logger.Info($"[+] Customer - {ID}");
+
         ServerMain.Instance.UnknownClientCache.Put(ID, new Client(ID, null, "/call"));
     }
 
@@ -38,6 +44,10 @@ public class IncomingCallService : WebSocketBehavior
 
     protected override void OnMessage(MessageEventArgs e)
     {
+        if (ServerMain.Instance.IsStopping)
+            return;
+        
+        
         ServerMain.Instance.Logger.Info($"[MSG] Customer {ID} - {e.Data}");
         Dictionary<string, string>? json = JsonUtils.Deserialize(e.Data);
         if (json == null)
