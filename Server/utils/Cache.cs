@@ -1,5 +1,5 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Text;
 
 namespace Server.Utils;
 
@@ -259,6 +259,26 @@ public class Cache<I, E>
         KeyValuePair<MethodInfo, object?> mapFunction = _indexMapFunctions[indexName];
         object indexIdentifier = mapFunction.Key.Invoke(mapFunction.Value, new object?[] { element });
         return indexIdentifier;
+    }
+
+    public string SaveToDisk()
+    {
+        string cacheId = Guid.NewGuid().ToString();
+        string tempPath = Path.GetTempPath();
+        string folderPath = tempPath + @"Callcenter-Server\caches\";
+        string filePath = folderPath + cacheId + ".json";
+
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+
+        FileStream file = File.Create(filePath);
+        string json = JsonUtils.SerializeObject(_cache);
+        byte[] data = Encoding.ASCII.GetBytes(json);
+        file.Write(data, 0, data.Length);
+        file.Flush(true);
+        file.Close();
+
+        return filePath;
     }
     
 }

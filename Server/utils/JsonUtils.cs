@@ -35,4 +35,11 @@ public static class JsonUtils
 
         return json;
     }
+
+    public static string SerializeObject(object obj)
+    {
+        string json = JsonSerializer.Serialize(obj, obj.GetType(), new JsonSerializerOptions());
+
+        return json;
+    }
 }

@@ -1,7 +1,4 @@
-﻿using Server.Clients;
-using Server.Utils;
-
-namespace Server;
+﻿namespace Server;
 
 public static class Program
 {
