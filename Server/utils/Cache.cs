@@ -1,4 +1,7 @@
-﻿namespace Server.Utils;
+﻿using System.Linq.Expressions;
+using System.Reflection;
+
+namespace Server.Utils;
 
 public class Cache<I, E>
 {
@@ -9,10 +12,11 @@ public class Cache<I, E>
 
     private readonly Dictionary<string, Dictionary<dynamic, List<E>>> _indexes;
     private readonly Dictionary<string, Type> _indexTypes;
-    
+    private readonly Dictionary<string, KeyValuePair<MethodInfo, object?>> _indexMapFunctions;
+
     private readonly bool _useLFU;
-    private readonly LinkedList<E> _leastFrequentlyUsed; // supporting LFU and LRU cache combined, since it's a doubly linked list
-    public LinkedList<E> LeastFrequentlyUsed => _leastFrequentlyUsed;
+    private readonly LinkedList<I> _leastFrequentlyUsed; // supporting LFU and LRU cache combined, since it's a doubly linked list
+    public LinkedList<I> LeastFrequentlyUsed => _leastFrequentlyUsed;
 
     private readonly bool _autoRemove;
     private readonly Dictionary<I, int> _cacheTimes;
@@ -20,14 +24,17 @@ public class Cache<I, E>
 
     public Cache(bool useLFU = false, bool autoRemove = false)
     {
-        _autoRemove = autoRemove;
         _cache = new Dictionary<I, E>();
+        
+        _autoRemove = autoRemove;
         _cacheTimes = new Dictionary<I, int>();
+        
         _indexes = new Dictionary<string, Dictionary<dynamic, List<E>>>();
         _indexTypes = new Dictionary<string, Type>();
+        _indexMapFunctions = new Dictionary<string, KeyValuePair<MethodInfo, object?>>();
+        
         _useLFU = useLFU;
-
-        _leastFrequentlyUsed = new LinkedList<E>();
+        _leastFrequentlyUsed = new LinkedList<I>();
 
         _cacheThread = new Thread(CacheThread);
         _cacheThread.Start();
@@ -72,8 +79,18 @@ public class Cache<I, E>
         if(_autoRemove || autoRemove) 
             _cacheTimes.Add(identifier, TimeInCache);
         
+        foreach (var index in _indexes)
+        {
+            var indexIdentifier = GetIndexIdentifier(index.Key, element);
+            
+            if (index.Value.ContainsKey(indexIdentifier))
+                index.Value[indexIdentifier].Add(element);
+            else
+                index.Value.Add(indexIdentifier, new List<E>{element});
+        }
+
         if(_useLFU) 
-            _leastFrequentlyUsed.AddFirst(element);
+            _leastFrequentlyUsed.AddFirst(identifier);
     }
 
     public void Remove(I identifier)
@@ -82,8 +99,18 @@ public class Cache<I, E>
             return;
 
         if(_useLFU) 
-            _leastFrequentlyUsed.Remove(Get(identifier));
+            _leastFrequentlyUsed.Remove(identifier);
 
+        E element = Get(identifier);
+        
+        foreach (var index in _indexes)
+        {
+            var indexIdentifier = GetIndexIdentifier(index.Key, element);
+
+            if (index.Value.ContainsKey(indexIdentifier))
+                index.Value[indexIdentifier].Remove(element);
+        }
+        
         _cache.Remove(identifier);
         _cacheTimes.Remove(identifier);
     }
@@ -97,8 +124,8 @@ public class Cache<I, E>
             // Moving the element to the top
             if (_useLFU)
             {
-                _leastFrequentlyUsed.Remove(element);
-                _leastFrequentlyUsed.AddFirst(element);
+                _leastFrequentlyUsed.Remove(identifier);
+                _leastFrequentlyUsed.AddFirst(identifier);
             }
             
             return element;    
@@ -119,6 +146,21 @@ public class Cache<I, E>
     public bool Contains(I identifier)
     {
         return _cache.ContainsKey(identifier);
+    }
+    
+    
+    /// <returns>Identifier of first matching element</returns>
+    public I IdentifierFromElement(E element)
+    {
+        foreach (var pair in _cache)
+        {
+            if (pair.Value.Equals(element))
+            {
+                return pair.Key;
+            }
+        }
+
+        throw new NullReferenceException("Could not find identifier from element");
     }
 
     public void AutoRemove(I identifier, int time = TimeInCache)
@@ -165,6 +207,7 @@ public class Cache<I, E>
         
         _indexes.Add(indexName, index);
         _indexTypes.Add(indexName, typeof(T));
+        _indexMapFunctions.Add(indexName, new KeyValuePair<MethodInfo, object?>(mapFunc.Method, mapFunc.Target));
     }
 
     public List<E> GetFromIndex(string indexName, object identifier)
@@ -188,8 +231,13 @@ public class Cache<I, E>
             // Move elements to the top
             foreach (var element in elements)
             {
-                _leastFrequentlyUsed.Remove(element);
-                _leastFrequentlyUsed.AddFirst(element);
+                try
+                {
+                    I realIdentifier = IdentifierFromElement(element);
+                    _leastFrequentlyUsed.Remove(realIdentifier);
+                    _leastFrequentlyUsed.AddFirst(realIdentifier);
+                }
+                catch (NullReferenceException e) { }
             }
         }
 
@@ -204,6 +252,13 @@ public class Cache<I, E>
             throw new NullReferenceException("Could not find element in index");
 
         return list[0];
+    }
+
+    private object? GetIndexIdentifier(string indexName, E element)
+    {
+        KeyValuePair<MethodInfo, object?> mapFunction = _indexMapFunctions[indexName];
+        object indexIdentifier = mapFunction.Key.Invoke(mapFunction.Value, new object?[] { element });
+        return indexIdentifier;
     }
     
 }
