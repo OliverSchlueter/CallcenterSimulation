@@ -1,4 +1,6 @@
-﻿namespace Server.Clients;
+﻿using Server.Utils;
+
+namespace Server.Clients;
 
 public class Call
 {
@@ -62,8 +64,9 @@ public class Call
     {
         Client receiver = sender.ClientId == _customer.ClientId ? _employee : _customer;
         
-        receiver.Session.Send("{\"call_message_from\": \"%senderId%\", \"call_message\": \"%data%\"}"
+        receiver.Session.Send("{\"call_message_from\": \"%senderId%\", \"call_message_hash\": \"%hash%\",  \"call_message\": \"%data%\"}"
             .Replace("%senderId%", sender.ClientId)
+            .Replace("%hash%", HashUtils.Sha256(message))
             .Replace("%data%", message));
     }
 }

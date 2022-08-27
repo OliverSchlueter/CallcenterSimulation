@@ -83,10 +83,14 @@ namespace EmployeeClient
                 }
             }
 
-            if (json.ContainsKey("call_message") && _callHandler.CurrentCall != null && _callHandler.CurrentCall.CallStatus == CallStatus.InCall)
+            if (json.ContainsKey("call_message") && json.ContainsKey("call_message_hash") && _callHandler.CurrentCall != null && _callHandler.CurrentCall.CallStatus == CallStatus.InCall)
             {
                 string[] callMessage = json["call_message"].ToString().Split(':');
-
+                string hash = json["call_message_hash"].ToString();
+                
+                if(!hash.Equals(HashUtils.Sha256(json["call_message"].ToString())))
+                    return;
+                
                 if (callMessage[0] == "chat")
                 {
                     _callHandler.CurrentCall.CallForm.rtb_chatLog.Text += $"Partner: {callMessage[1]}\n";
