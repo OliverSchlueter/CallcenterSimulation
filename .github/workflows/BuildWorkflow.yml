@@ -1,4 +1,4 @@
-name: .NET
+name: Server
 
 on:
   push:
@@ -15,9 +15,9 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: (Server) Restore dependencies
+    - name: Restore dependencies
       run: dotnet restore Server
-    - name: (Server) Build
+    - name: Build
       run: dotnet build Server --no-restore
-    - name: (Server) Test
+    - name: Test
       run: dotnet test Server --no-build --verbosity normal
