@@ -21,3 +21,9 @@ jobs:
       run: dotnet build Server --no-restore
     - name: Test
       run: dotnet test Server --no-build --verbosity normal
+    - name: Persist data
+      uses: actions/upload-artifact@v2
+      with:
+        name: server-artifact
+        path: Server/bin/Debug/net6.0
+    
