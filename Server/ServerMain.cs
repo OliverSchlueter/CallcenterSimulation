@@ -11,7 +11,7 @@ public class ServerMain
     private static ServerMain _instance;
     public static ServerMain Instance => _instance;
 
-    public const string Version = "1.1.2-rc.1";
+    public const string Version = "1.1.2-rc.2";
 
     private const int AutoRestartDelay = 60*6; // in minutes
 
@@ -46,7 +46,7 @@ public class ServerMain
         _isStopping = false;
         _sessionIdClientId = new Dictionary<string, string>();
         _clientCache = new Cache<string, Client>(false);
-        _clientCache.AddIndex("SessionId", client => { return client.SessionId; } );
+        _clientCache.AddIndex("SessionId", client => client.SessionId);
         _unknownClientCache = new Cache<string, Client>(false);
         _waitingCustomers = new Dictionary<string, Queue<Client>>();
         _currentCalls = new Dictionary<Client, Call>();
