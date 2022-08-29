@@ -11,7 +11,7 @@ public class ServerMain
     private static ServerMain _instance;
     public static ServerMain Instance => _instance;
 
-    public const string Version = "1.1.2-rc.2";
+    public const string Version = "2.0.0";
 
     private const int AutoRestartDelay = 60*6; // in minutes
 
